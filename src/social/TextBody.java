@@ -12,5 +12,4 @@ public class TextBody implements Body<String> {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
 }
