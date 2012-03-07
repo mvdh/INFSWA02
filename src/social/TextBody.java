@@ -1,6 +1,6 @@
 package social;
 
-public class TextHeader implements Header<String> {
+public class TextBody implements Body<String> {
 
 	private String content;
 	

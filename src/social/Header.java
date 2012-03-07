@@ -1,6 +1,6 @@
 package social;
 
-public interface Header {
+public interface Header<T> {
 
-	public Object getContent();
+	public T getContent();
 }

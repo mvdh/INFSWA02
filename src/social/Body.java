@@ -1,5 +1,6 @@
 package social;
 
-public interface Body {
+public interface Body<T> {
 
+	public T getContent();
 }

@@ -1,5 +1,6 @@
 package social;
 
-public interface Footer {
+public interface Footer<T> {
 
+	public T getContent();
 }
