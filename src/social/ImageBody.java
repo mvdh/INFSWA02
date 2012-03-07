@@ -1,5 +1,5 @@
 package social;
 
-public class ImageBody implements Body {
+public class ImageBody extends Body {
 
 }

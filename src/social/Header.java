@@ -1,6 +1,13 @@
 package social;
 
-public interface Header {
+public abstract class Header {
+	public String text;
+	
+	public void set(String st) {
+		text = st;	
+	}
 
-	public Object getContent();
+	public String get() {
+		return text;
+	}
 }

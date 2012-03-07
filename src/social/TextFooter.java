@@ -1,5 +1,5 @@
 package social;
 
-public class TextFooter implements Footer {
+public class TextFooter extends Footer {
 
 }
