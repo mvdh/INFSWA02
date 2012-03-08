@@ -1,11 +1,18 @@
 package social;
 
+import java.lang.reflect.InvocationHandler;
+
 public class ProxyMessageFactory implements MessageFactory {
 
-	MessageInvocationHandler invocationHandler;
+	InvocationHandler invocationHandler;
 	
-	public ProxyMessageFactory(MessageInvocationHandler ih) {
+	public ProxyMessageFactory(InvocationHandler ih) {
 		invocationHandler = ih;
+	}
+
+	@Override
+	public Message createMessage() {
+		return null;
 	}
 	
 }
