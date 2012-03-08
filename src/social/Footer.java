@@ -1,6 +1,13 @@
 package social;
 
-public interface Footer<T> {
-
-	public T getContent();
+public abstract class Footer<T> {
+	public T content;
+	
+	public T get() {
+		return this.content;
+	}
+	
+	public void set(T content) {
+		this.content = content;	
+	}
 }

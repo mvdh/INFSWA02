@@ -3,17 +3,17 @@ package social;
 public class TextMessageComponentFactory implements MessageComponentFactory {
 
 	@Override
-	public Header createHeader() {
+	public Header<String> createHeader() {
 		return new TextHeader();
 	}
 
 	@Override
-	public Body createBody() {
+	public Body<String> createBody() {
 		return new TextBody();
 	}
 
 	@Override
-	public Footer createFooter() {
+	public Footer<String> createFooter() {
 		return new TextFooter();
 	}
 }
