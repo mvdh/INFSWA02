@@ -1,9 +1,9 @@
 package social;
 
-import java.util.ArrayList;
-
 public interface Subject {
-
-	ArrayList<Observer> subscribers = new ArrayList<Observer>();
+	
+	boolean attach(Observer o);
+	boolean detach(Observer o);
+	void notifyObservers();
 	
 }
