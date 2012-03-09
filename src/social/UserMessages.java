@@ -35,7 +35,7 @@ public class UserMessages<E> extends ArrayList<E> implements Subject{
 	@Override
 	public void notifyObservers() {
 		for (Observer o : subscribers){
-			o.update();
+			o.update(this);
 		}
 		
 	}
