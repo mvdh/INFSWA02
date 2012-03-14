@@ -3,17 +3,17 @@ package social;
 public class ImageMessageComponentFactory implements MessageComponentFactory {
 
 	@Override
-	public Header<Integer> createHeader() {
+	public Header<String> createHeader() {
 		return new ImageHeader();
 	}
 
 	@Override
-	public Body<Integer> createBody() {
+	public Body<String> createBody() {
 		return new ImageBody();
 	}
 
 	@Override
-	public Footer<Integer> createFooter() {
+	public Footer<String> createFooter() {
 		return new ImageFooter();
 	}
 }

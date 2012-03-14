@@ -1,21 +1,21 @@
 package social;
 
+
 public class User {
 
-	ProxyMessageFactory messageFactory;
+	MessageFactory messageFactoryProxy;
 	UserMessages<Message> messages;
 	
-	public User(ProxyMessageFactory mf){
+	public User(MessageFactory mfp){
 		messages = new UserMessages<Message>();
-		messageFactory = mf;
+		messageFactoryProxy = mfp;
 	}
 	
 	public void createMessage(MessageComponentFactory mcf, String header, String body, String footer){
-		Message message = new Message(mcf);
+		Message message = this.messageFactoryProxy.createMessage(mcf);
 		message.header.set(header);
 		message.body.set(body);
 		message.footer.set(footer);
 		messages.add(message);
 	}
-	
 }

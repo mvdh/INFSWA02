@@ -1,4 +1,4 @@
 package social;
 
-public class ImageBody extends Body<Integer> {
+public class ImageBody extends Body<String> {
 }

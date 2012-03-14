@@ -2,5 +2,5 @@ package social;
 
 public interface MessageFactory {
 	
-	public Message createMessage();
+	public Message createMessage(MessageComponentFactory mCF);
 }
