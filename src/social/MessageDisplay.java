@@ -5,12 +5,14 @@ import java.util.ArrayList;
 
 public class MessageDisplay implements Observer {
 
-	ArrayList<UserMessages<Message>> subjects;
+	ArrayList<UserMessages<Message>> subjects = new ArrayList<UserMessages<Message>>();
 	
 	public void display(Message m){
-		System.out.println(m.header);
-		System.out.println(m.body);
-		System.out.println(m.footer);
+		System.out.println("MessageDisplay:");
+		System.out.println(m.header.get());
+		System.out.println(m.body.get());
+		System.out.println(m.footer.get());
+		System.out.println("");
 	}
 
 	@Override
@@ -22,7 +24,7 @@ public class MessageDisplay implements Observer {
 	@Override
 	public void unsubscribe(Subject s) {
 		s.detach(this);
-		subjects.remove((UserMessages<Message>)s);
+		subjects.remove(s);
 	}
 
 	@Override

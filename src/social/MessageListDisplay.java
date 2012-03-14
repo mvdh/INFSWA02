@@ -4,17 +4,19 @@ import java.util.ArrayList;
 
 public class MessageListDisplay implements Observer {
 
-	ArrayList<UserMessages<Message>> subjects;
+	ArrayList<UserMessages<Message>> subjects = new ArrayList<UserMessages<Message>>();
 	
 	public void display(){
 		int i=0;
+		System.out.println("MessageListDisplay:");
 		for (UserMessages<Message> um : subjects){
 			i++;
-			System.out.println("Lijst "+i);
+			System.out.println("User "+i);
 			for (Message m : um){
-				System.out.println(m.header);
+				System.out.println(m.header.get());
 			}
 		}
+		System.out.println("");
 	}
 
 	@Override
@@ -26,7 +28,7 @@ public class MessageListDisplay implements Observer {
 	@Override
 	public void unsubscribe(Subject s) {
 		s.detach(this);
-		subjects.remove((UserMessages<Message>)s);
+		subjects.remove(s);
 	}
 
 	@Override

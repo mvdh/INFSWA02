@@ -13,64 +13,76 @@ public class Network {
 	}
 
 	public void dosomething() {
-		/*
-		 * Eerste bericht
-		 */
-		MessageComponentFactory mcf = new TextMessageComponentFactory();
+		
 		User u = new User(this.getAllowedProxy(new RealMessageFactory()));
+		User u2 = new User(this.getAllowedProxy(new RealMessageFactory()));
+		MessageDisplay md = new MessageDisplay();
+		md.subscribe(u.messages);
+
+		MessageListDisplay mld = new MessageListDisplay();
+		mld.subscribe(u.messages);
+		mld.subscribe(u2.messages);
+		
+		/*
+		 * Eerste bericht, user 1
+		 */
 		try {
-			u.createMessage(mcf, "Content TextHeader", "Content van TextBody", "Content van TextFooter");
-			Message m = u.messages.get(u.messages.size() - 1);
-			System.out.println(
-			"Header: \t" + "(" + m.header.getClass() + ") " + m.header.get() + "\n" +
-			"Body: \t\t" + "(" + m.body.getClass() + ") " + m.body.get() + "\n" +
-			"Footer: \t" + "(" + m.footer.getClass() + ") " + m.footer.get() + "\n\n"
-			);
+			u.createMessage(new TextMessageComponentFactory(), "Aap", "Noot", "Mies");
+			System.out.println(u.lastMessage());
+		}
+		catch(Exception e) {
+			System.out.println("Sorry, eerste bericht niet gelukt\n");
+		}
+		
+		/*
+		 * Eerste bericht, user 2
+		 */
+		try {
+			u2.createMessage(new TextMessageComponentFactory(), "Wim", "Zus", "Jet");
+			System.out.println(u2.lastMessage());
 		}
 		catch(Exception e) {
 			System.out.println("Sorry, eerste bericht niet gelukt");
-		}
-		
+		}		
 		
 		/*
-		 * Tweede bericht
+		 * Tweede bericht, user 1
 		 */
-		mcf = new ImageMessageComponentFactory();
 		try {
-			u.createMessage(mcf, "Content ImageHeader", "Content van ImageBody", "Content van ImageFooter");
-			Message m = u.messages.get(u.messages.size() - 1);
-			System.out.println(
-			"Header: \t" + "(" + m.header.getClass() + ") " + m.header.get() + "\n" +
-			"Body: \t\t" + "(" + m.body.getClass() + ") " + m.body.get() + "\n" +
-			"Footer: \t" + "(" + m.footer.getClass() + ") " + m.footer.get() + "\n\n"
-			);
+			u.createMessage(new ImageMessageComponentFactory(), "Teun", "Vuur", "Gijs");
+			System.out.println(u.lastMessage());
 		}
 		catch(Exception e) {
 			System.out.println("Sorry, tweede bericht niet gelukt");
 		}
 		
 		
-		
 		u.messageFactoryProxy = this.getNotAllowedProxy(new RealMessageFactory());
 		/*
-		 * Derde bericht
+		 * Derde bericht, user 1
 		 */
-		mcf = new ImageMessageComponentFactory();
 		try {
-			u.createMessage(mcf, "Content ImageHeader", "Content van ImageBody", "Content van ImageFooter");
-			Message m = u.messages.get(u.messages.size() - 1);
-			System.out.println(
-			"Header: \t" + "(" + m.header.getClass() + ") " + m.header.get() + "\n" +
-			"Body: \t\t" + "(" + m.body.getClass() + ") " + m.body.get() + "\n" +
-			"Footer: \t" + "(" + m.footer.getClass() + ") " + m.footer.get()
-			);
+			u.createMessage(new ImageMessageComponentFactory(), "Lam", "Kees", "Bok");
+			System.out.println(u.lastMessage());
 		}
 		catch(Exception e) {
-			System.out.println("Sorry, derde bericht niet gelukt");
+			System.out.println("Sorry, derde bericht niet gelukt\n");
+			System.out.println("///////////////////////////////////");
 		}
 		
-		
+		/*
+		 * Tweede bericht, user 2
+		 */
+		try {
+			u2.createMessage(new TextMessageComponentFactory(), "Weide", "Does", "Hok");
+			System.out.println(u2.lastMessage());
+		}
+		catch(Exception e) {
+			System.out.println("Sorry, tweede bericht niet gelukt");
+		}		
 	}
+	
+	
 	
 	public MessageFactory getAllowedProxy(MessageFactory realMessageFactory) {
 		return (MessageFactory) Proxy.newProxyInstance(
